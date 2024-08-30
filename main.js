@@ -1,95 +1,109 @@
-// Función principal para iniciar la interacción con el usuario
-function iniciarCompra() {
-    let nombre = prompt("Bienvenido a la tienda de acuario. ¿Cuál es tu nombre?");
-    alert("Hola " + nombre + ", ¡bienvenido a nuestra tienda!");
+// Inicialización de productos
+const productos = [
+    { nombre: "Pez Goldfish", precio: 50, categoria: "Peces" },
+    { nombre: "Pez Betta", precio: 70, categoria: "Peces" },
+    { nombre: "Pez Guppy", precio: 40, categoria: "Peces" },
+    { nombre: "Planta Elodea", precio: 30, categoria: "Plantas" },
+    { nombre: "Planta Anubias", precio: 45, categoria: "Plantas" },
+    { nombre: "Planta Musgo de Java", precio: 25, categoria: "Plantas" },
+    { nombre: "Filtro de Agua", precio: 100, categoria: "Otros" },
+    { nombre: "Termostato", precio: 80, categoria: "Otros" },
+    { nombre: "Kit de Limpieza", precio: 60, categoria: "Otros" }
+];
+
+// Carrito de compras
+let carrito = [];
+
+// Función para iniciar el proceso de compra
+const iniciarCompra = () => {
+    const nombre = prompt("Bienvenido a la tienda de acuario. ¿Cuál es tu nombre?");
+    alert(`Hola ${nombre}, ¡bienvenido a nuestra tienda!`);
 
     let opcion = "";
     while (opcion !== "4") {
         opcion = prompt("¿Qué te gustaría comprar hoy?\n1. Peces\n2. Plantas\n3. Otros\n4. Salir");
-        
-        if (opcion === "1") {
-            comprarPeces();
-        } else if (opcion === "2") {
-            comprarPlantas();
-        } else if (opcion === "3") {
-            comprarOtros();
-        } else if (opcion !== "4") {
-            alert("Por favor, selecciona una opción válida.");
+
+        switch (opcion) {
+            case "1":
+                comprarProductos("Peces");
+                break;
+            case "2":
+                comprarProductos("Plantas");
+                break;
+            case "3":
+                comprarProductos("Otros");
+                break;
+            case "4":
+                alert("Gracias por visitar nuestra tienda, ¡esperamos verte pronto!");
+                break;
+            default:
+                alert("Por favor, selecciona una opción válida.");
         }
     }
+};
 
-    alert("Gracias por visitar nuestra tienda, ¡esperamos verte pronto!");
-}
+// Función para comprar productos según categoría
+const comprarProductos = (categoria) => {
+    let opcion = "";
+    while (opcion !== "4") {
+        const productosFiltrados = filtrarProductos(categoria);
+        let mensaje = `Selecciona el ${categoria.toLowerCase()} que deseas comprar:\n`;
+        productosFiltrados.forEach((producto, index) => {
+            mensaje += `${index + 1}. ${producto.nombre} - $${producto.precio}\n`;
+        });
+        mensaje += "4. Volver al menú principal\n5. Finalizar compra";
 
-// Función para la opción de compra de peces
-function comprarPeces() {
-    let opcionPez = "";
-    while (opcionPez !== "4") {
-        opcionPez = prompt("Selecciona el pez que deseas comprar:\n1. Pez Goldfish - $50\n2. Pez Betta - $70\n3. Pez Guppy - $40\n4. Volver al menú principal");
-        
-        if (opcionPez === "1") {
-            finalizarCompra("Pez Goldfish", 50);
-        } else if (opcionPez === "2") {
-            finalizarCompra("Pez Betta", 70);
-        } else if (opcionPez === "3") {
-            finalizarCompra("Pez Guppy", 40);
-        } else if (opcionPez === "4") {
+        opcion = prompt(mensaje);
+
+        if (opcion >= "1" && opcion <= "3") {
+            const productoSeleccionado = productosFiltrados[opcion - 1];
+            finalizarCompra(productoSeleccionado);
+        } else if (opcion === "4") {
             return; // Volver al menú principal
+        } else if (opcion === "5") {
+            mostrarCarrito();
+            return; // Finalizar la compra
         } else {
             alert("Opción no válida.");
         }
     }
-}
-
-// Función para la opción de compra de plantas
-function comprarPlantas() {
-    let opcionPlanta = "";
-    while (opcionPlanta !== "4") {
-        opcionPlanta = prompt("Selecciona la planta que deseas comprar:\n1. Planta Elodea - $30\n2. Planta Anubias - $45\n3. Planta Musgo de Java - $25\n4. Volver al menú principal");
-        
-        if (opcionPlanta === "1") {
-            finalizarCompra("Planta Elodea", 30);
-        } else if (opcionPlanta === "2") {
-            finalizarCompra("Planta Anubias", 45);
-        } else if (opcionPlanta === "3") {
-            finalizarCompra("Planta Musgo de Java", 25);
-        } else if (opcionPlanta === "4") {
-            return; // Volver al menú principal
-        } else {
-            alert("Opción no válida.");
-        }
-    }
-}
-
-// Función para la opción de compra de otros productos
-function comprarOtros() {
-    let opcionOtro = "";
-    while (opcionOtro !== "4") {
-        opcionOtro = prompt("Selecciona el artículo que deseas comprar:\n1. Filtro de Agua - $100\n2. Termostato - $80\n3. Kit de Limpieza - $60\n4. Volver al menú principal");
-        
-        if (opcionOtro === "1") {
-            finalizarCompra("Filtro de Agua", 100);
-        } else if (opcionOtro === "2") {
-            finalizarCompra("Termostato", 80);
-        } else if (opcionOtro === "3") {
-            finalizarCompra("Kit de Limpieza", 60);
-        } else if (opcionOtro === "4") {
-            return; // Volver al menú principal
-        } else {
-            alert("Opción no válida.");
-        }
-    }
-}
+};
 
 // Función para finalizar la compra y confirmar
-function finalizarCompra(item, precio) {
-    let confirmar = confirm("Has seleccionado " + item + ". El precio es $" + precio + ". ¿Deseas confirmar la compra?");
+const finalizarCompra = (producto) => {
+    const confirmar = confirm(`Has seleccionado ${producto.nombre}. El precio es $${producto.precio}. ¿Deseas confirmar la compra?`);
     if (confirmar) {
-        alert("Compra confirmada. Gracias por tu compra de " + item + "!");
+        agregarAlCarrito(producto);
+        alert(`El producto ${producto.nombre} ha sido agregado al carrito.`);
     } else {
         alert("Compra cancelada.");
     }
-}
+};
+
+// Función para agregar un producto al carrito
+const agregarAlCarrito = (producto) => {
+    carrito.push(producto);
+};
+
+// Función para mostrar el carrito
+const mostrarCarrito = () => {
+    let mensaje = "Carrito de Compras:\n";
+    carrito.forEach((producto) => {
+        mensaje += `Producto: ${producto.nombre}, Precio: $${producto.precio}\n`;
+    });
+    mensaje += `Total: $${calcularTotal()}`;
+    alert(mensaje);
+};
+
+// Función para calcular el total del carrito
+const calcularTotal = () => {
+    return carrito.reduce((total, producto) => total + producto.precio, 0);
+};
+
+// Función para filtrar productos por categoría
+const filtrarProductos = (categoria) => {
+    return productos.filter((producto) => producto.categoria === categoria);
+};
 
 // Iniciar el proceso de compra
 iniciarCompra();

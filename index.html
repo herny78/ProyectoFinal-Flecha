@@ -10,17 +10,18 @@
     <div class="container">
         <h1>Bienvenido a la Tienda de Acuario</h1>
         <div id="product-menu">
-            <button class="button button-primary" onclick="mostrarCategoria('Peces')">Peces</button>
-            <button class="button button-primary" onclick="mostrarCategoria('Plantas')">Plantas</button>
-            <button class="button button-primary" onclick="mostrarCategoria('Otros')">Otros</button>
+            <button class="button button-primary" id="btnPeces">Peces</button>
+            <button class="button button-primary" id="btnPlantas">Plantas</button>
+            <button class="button button-primary" id="btnOtros">Otros</button>
         </div>
         <div class="products" id="products"></div>
         <div class="cart" id="cart">
             <h2>Carrito de Compras</h2>
             <div id="cart-items"></div>
-            <button class="button button-secondary" onclick="finalizarCompra()">Finalizar Compra</button>
+            <button class="button button-secondary" id="btnFinalizarCompra">Finalizar Compra</button>
         </div>
     </div>
     <script src="./main.js"></script>
 </body>
 </html>
+

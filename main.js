@@ -25,9 +25,18 @@ const mostrarCategoria = (categoria) => {
         productoDiv.classList.add('product-item');
         productoDiv.innerHTML = `
             ${index + 1}. ${producto.nombre} - $${producto.precio}
-            <button class="button button-primary" onclick="agregarAlCarrito(${index}, '${categoria}')">agregar al carrito</button>
+            <button class="button button-primary" data-index="${index}" data-categoria="${categoria}">Agregar al carrito</button>
         `;
         productosDiv.appendChild(productoDiv);
+    });
+
+    // Asignar eventos a los botones de agregar al carrito
+    document.querySelectorAll('.product-item button').forEach(button => {
+        button.addEventListener('click', (event) => {
+            const index = event.target.getAttribute('data-index');
+            const categoria = event.target.getAttribute('data-categoria');
+            agregarAlCarrito(index, categoria);
+        });
     });
 };
 
@@ -79,3 +88,11 @@ const filtrarProductos = (categoria) => {
 
 // Inicialmente, mostramos la categoría "Peces"
 mostrarCategoria('Peces');
+
+// Asignar evento al botón de finalizar compra
+document.getElementById('btnFinalizarCompra').addEventListener('click', finalizarCompra);
+
+// Asignar eventos a los botones de categoría
+document.getElementById('btnPeces').addEventListener('click', () => mostrarCategoria('Peces'));
+document.getElementById('btnPlantas').addEventListener('click', () => mostrarCategoria('Plantas'));
+document.getElementById('btnOtros').addEventListener('click', () => mostrarCategoria('Otros'));

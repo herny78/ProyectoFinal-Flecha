@@ -1,0 +1,80 @@
+{
+    "productos": [
+      {
+        "nombre": "Pez Goldfish",
+        "precio": 50,
+        "categoria": "Peces"
+      },
+      {
+        "nombre": "Pez Betta",
+        "precio": 70,
+        "categoria": "Peces"
+      },
+      {
+        "nombre": "Pez Guppy",
+        "precio": 40,
+        "categoria": "Peces"
+      },
+      {
+        "nombre": "Pez Neon Tetra",
+        "precio": 30,
+        "categoria": "Peces"
+      },
+      {
+        "nombre": "Pez Cíclido",
+        "precio": 90,
+        "categoria": "Peces"
+      },
+      {
+        "nombre": "Planta Elodea",
+        "precio": 30,
+        "categoria": "Plantas"
+      },
+      {
+        "nombre": "Planta Anubias",
+        "precio": 45,
+        "categoria": "Plantas"
+      },
+      {
+        "nombre": "Planta Musgo de Java",
+        "precio": 25,
+        "categoria": "Plantas"
+      },
+      {
+        "nombre": "Planta Vallisneria",
+        "precio": 35,
+        "categoria": "Plantas"
+      },
+      {
+        "nombre": "Planta Helecho de Java",
+        "precio": 50,
+        "categoria": "Plantas"
+      },
+      {
+        "nombre": "Filtro de Agua",
+        "precio": 100,
+        "categoria": "Otros"
+      },
+      {
+        "nombre": "Termostato",
+        "precio": 80,
+        "categoria": "Otros"
+      },
+      {
+        "nombre": "Kit de Limpieza",
+        "precio": 60,
+        "categoria": "Otros"
+      },
+      {
+        "nombre": "Comida para Peces",
+        "precio": 25,
+        "categoria": "Otros"
+      },
+      {
+        "nombre": "Red para Peces",
+        "precio": 15,
+        "categoria": "Otros"
+      }
+    ]
+  }
+  

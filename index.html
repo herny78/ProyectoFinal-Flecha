@@ -3,25 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tienda de Acuario</title>
+    <title>Tienda de Acuarios</title>
     <link rel="stylesheet" href="./CSS/style.css">
 </head>
 <body>
     <div class="container">
-        <h1>Bienvenido a la Tienda de Acuario</h1>
+        <h1>Tienda de Acuarios</h1>
+
+        <!-- Menú de categorías -->
         <div id="product-menu">
-            <button class="button button-primary" id="btnPeces">Peces</button>
-            <button class="button button-primary" id="btnPlantas">Plantas</button>
-            <button class="button button-primary" id="btnOtros">Otros</button>
+            <button id="btnPeces" class="button button-primary">Peces</button>
+            <button id="btnPlantas" class="button button-secondary">Plantas</button>
+            <button id="btnOtros" class="button button-secondary">Otros</button>
         </div>
-        <div class="products" id="products"></div>
-        <div class="cart" id="cart">
+
+        <!-- Sección de productos -->
+        <div id="products" class="products"></div>
+
+        <!-- Carrito de compras -->
+        <div class="cart">
             <h2>Carrito de Compras</h2>
             <div id="cart-items"></div>
-            <button class="button button-secondary" id="btnFinalizarCompra">Finalizar Compra</button>
+            <button id="btnFinalizarCompra" class="button button-primary">Finalizar Compra</button>
         </div>
     </div>
+
     <script src="./JS/main.js"></script>
 </body>
 </html>
-

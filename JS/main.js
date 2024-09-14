@@ -14,6 +14,20 @@ const productos = [
 // Carrito de compras
 let carrito = [];
 
+// Función para cargar el carrito desde LocalStorage
+const cargarCarritoDeLocalStorage = () => {
+    const carritoGuardado = localStorage.getItem('carrito');
+    if (carritoGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+        mostrarCarrito();  // Actualiza la vista del carrito con los productos guardados
+    }
+};
+
+// Función para guardar el carrito en LocalStorage
+const guardarCarritoEnLocalStorage = () => {
+    localStorage.setItem('carrito', JSON.stringify(carrito));
+};
+
 // Función para mostrar productos de una categoría
 const mostrarCategoria = (categoria) => {
     const productosFiltrados = filtrarProductos(categoria);
@@ -44,6 +58,7 @@ const mostrarCategoria = (categoria) => {
 const agregarAlCarrito = (index, categoria) => {
     const producto = filtrarProductos(categoria)[index];
     carrito.push(producto);
+    guardarCarritoEnLocalStorage();  // Guarda el carrito en LocalStorage cada vez que se agrega un producto
     mostrarCarrito();
 };
 
@@ -70,6 +85,7 @@ const finalizarCompra = () => {
     if (carrito.length > 0) {
         alert('Gracias por tu compra! Has finalizado la compra.');
         carrito = [];
+        guardarCarritoEnLocalStorage();  // Limpia el carrito en LocalStorage
         mostrarCarrito();
     } else {
         alert('El carrito está vacío.');
@@ -86,7 +102,10 @@ const filtrarProductos = (categoria) => {
     return productos.filter((producto) => producto.categoria === categoria);
 };
 
-// Inicialmente, mostramos la categoría "Peces"
+// Inicializar
+cargarCarritoDeLocalStorage();  // Cargar carrito de LocalStorage al iniciar
+
+// Mostrar la categoría "Peces" por defecto
 mostrarCategoria('Peces');
 
 // Asignar evento al botón de finalizar compra

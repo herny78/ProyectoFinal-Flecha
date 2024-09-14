@@ -81,16 +81,18 @@ const mostrarCarrito = () => {
 };
 
 // Función para finalizar la compra
-const finalizarCompra = () => {
-    if (carrito.length > 0) {
-        alert('Gracias por tu compra! Has finalizado la compra.');
-        carrito = [];
-        guardarCarritoEnLocalStorage();  // Limpia el carrito en LocalStorage
-        mostrarCarrito();
-    } else {
-        alert('El carrito está vacío.');
-    }
+const finalizarCompra = () => { 
+    carrito.length > 0 ? finalizarCompraConExito() : alert('El carrito está vacío.');
 };
+
+// Función para manejar el proceso de compra exitosa
+const finalizarCompraConExito = () => {
+    alert('Gracias por tu compra! Has finalizado la compra.');
+    carrito = [];
+    guardarCarritoEnLocalStorage();  // Limpia el carrito en LocalStorage
+    mostrarCarrito();
+};
+
 
 // Función para calcular el total del carrito
 const calcularTotal = () => {

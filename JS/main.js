@@ -1,11 +1,13 @@
-const productos = [
-    { nombre: "Pez Goldfish", precio: 50, categoria: "Peces", imagen: "../media/Goldfish.png" },
-    { nombre: "Pez Betta", precio: 70, categoria: "Peces", imagen: "../media/Betta.png" },
-    { nombre: "Planta Elodea", precio: 30, categoria: "Plantas", imagen: "../media/Elodea.png" },
-    { nombre: "Planta Anubias", precio: 45, categoria: "Plantas", imagen: "../media/Anubias.png" },
-    { nombre: "Filtro de Agua", precio: 100, categoria: "Otros", imagen: "../media/Filtro.png" },
-    { nombre: "Termostato", precio: 80, categoria: "Otros", imagen: "../media/calefactor.png" }
-];
+// Cargar productos desde el archivo JSON
+let productos = [];
+
+fetch('../JSON/productos.json')
+    .then(response => response.json())
+    .then(data => {
+        productos = data.productos;
+        cargarProductos();
+    })
+    .catch(error => console.error('Error al cargar los productos:', error));
 
 // Carrito de compras
 let carrito = JSON.parse(localStorage.getItem('carrito')) || [];
@@ -87,11 +89,21 @@ function enviarMensaje() {
     const message = document.getElementById("message").value;
 
     if (name && email && message) {
-        alert("Mensaje enviado. Gracias por contactarnos.");
+        Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "Muchas gracias por contactarnos",
+            showConfirmButton: false,
+            timer: 1500
+          });
         document.getElementById("contactForm").reset();
         $('#contactModal').modal('hide');
     } else {
-        alert("Por favor, completa todos los campos.");
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "complete los campos",
+          });
     }
 }
 

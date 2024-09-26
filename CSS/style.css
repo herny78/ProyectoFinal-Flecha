@@ -3,20 +3,32 @@ body {
     padding: 0;
     font-family: Arial, sans-serif;
     background-color: #ddd;
-    padding-top: 60px; /* Añadir espacio en la parte superior para el header fijo */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Media/fondo.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    padding-top: 60px; 
 }
 
+/* Estilo para la imagen del banner */
+.banner {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0;
+}
 
 /* CSS para el carrito desplegable */
 .carrito-container {
     position: fixed;
     right: 0;
-    top: 60px; /* Alineado con el header */
-    width: 300px;
+    top: 60px; 
+    width: 400px;
     background: #fff;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
     border-left: 1px solid #ddd;
-    display: none; /* Oculto por defecto */
+    display: none; 
     z-index: 1000;
     max-height: 80vh;
     overflow-y: auto;
@@ -75,24 +87,24 @@ body {
     flex-direction: column; 
     justify-content: space-between; 
     height: 100%; 
-    max-width: 300px; /* Reducir el tamaño de las cards */
-    margin: 0 auto; /* Centrar las cards */
-    border: 5px solid black; /* Borde negro de 5px */
-    border-radius: 10px; /* Esquinas redondeadas */
-    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añadir transición suave para transform y box-shadow */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Añadir sombra a las cards */
+    max-width: 300px; 
+    margin: 0 auto; 
+    border: 4px solid black; 
+    border-radius: 10px; 
+    transition: transform 0.3s ease, box-shadow 0.3s ease; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); 
 }
 
 .card:hover {
-    transform: scale(1.05); /* Efecto de aumento al pasar el cursor */
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumentar la sombra al pasar el cursor */
+    transform: scale(1.05); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); 
 }
 
 .card-img-top {
     width: 100%; 
     height: auto; 
     object-fit: cover; 
-    border-top-left-radius: 5px; /* Ajustar el radio de la imagen */
+    border-top-left-radius: 5px; 
     border-top-right-radius: 5px;
 }
 
@@ -103,9 +115,9 @@ body {
 }
 
 .card-body .btn {
-    margin-top: auto; /* Mueve el botón a la parte inferior */
-    align-self: center; /* Centra el botón horizontalmente */
-    width: 80%; /* Ajusta el ancho del botón */
+    margin-top: auto; 
+    align-self: center; 
+    width: 80%; 
 }
 
 .header-fijo {
@@ -116,7 +128,6 @@ body {
     z-index: 1000;
 }
 
-/* Añadir margen superior al contenedor principal */
 .container {
     margin-top: 20px;
 }

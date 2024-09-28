@@ -12,30 +12,37 @@
     <!-- Header -->
     <header class="header-fijo">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand d-flex align-items-center" href="index.html">
+            <a class="navbar-brand d-flex align-items-center" href="index.html" aria-label="Inicio">
                 <img src="./Media/Logo.png" alt="Logo Tienda de Acuarios" height="40" class="mr-2">
                 Tienda de Acuarios
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" 
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Alternar navegación">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" 
+                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Productos
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#" onclick="mostrarCategoria('Peces')">Peces</a>
-                            <a class="dropdown-item" href="#" onclick="mostrarCategoria('Plantas')">Plantas</a>
-                            <a class="dropdown-item" href="#" onclick="mostrarCategoria('Otros')">Otros</a>
+                            <a class="dropdown-item" href="#" onclick="mostrarCategoria('Peces')" 
+                               aria-label="Mostrar categoría Peces">Peces</a>
+                            <a class="dropdown-item" href="#" onclick="mostrarCategoria('Plantas')" 
+                               aria-label="Mostrar categoría Plantas">Plantas</a>
+                            <a class="dropdown-item" href="#" onclick="mostrarCategoria('Otros')" 
+                               aria-label="Mostrar categoría Otros">Otros</a>
                         </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal">Contacto</a>
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#contactModal" 
+                           aria-label="Abrir formulario de contacto">Contacto</a>
                     </li>
                 </ul>
-                <button id="btnCarrito" class="btn btn-outline-primary ml-auto" onclick="toggleCarrito()">
+                <button id="btnCarrito" class="btn btn-outline-primary ml-auto" onclick="toggleCarrito()" 
+                        aria-label="Mostrar carrito">
                     Carrito <span id="carritoCount" class="badge badge-pill badge-danger">0</span>
                 </button>
             </div>
@@ -44,7 +51,8 @@
 
     <!-- Imagen del banner -->
     <div class="container mt-4">
-        <img src="./Media/banner.png" alt="Banner Tienda de Acuarios" class="img-fluid banner" title="Banner Tienda de Acuarios">
+        <img src="./Media/banner.png" alt="Banner Tienda de Acuarios" class="img-fluid banner" 
+             title="Banner Tienda de Acuarios">
     </div>
 
     <!-- Main content -->
@@ -58,12 +66,13 @@
     </div>
 
     <!-- Contact Modal -->
-    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal fade" id="contactModal" tabindex="-1" role="dialog" 
+         aria-labelledby="contactModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="contactModalLabel">Contacto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
@@ -99,9 +108,15 @@
                     <p>&copy; 2024 Tienda de Acuarios. Todos los derechos reservados.</p>
                 </div>
                 <div class="col-md-6 text-center text-md-right">
-                    <a href="#" class="btn btn-outline-primary mx-1"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#" class="btn btn-outline-info mx-1"><i class="fab fa-twitter"></i></a>
-                    <a href="#" class="btn btn-outline-danger mx-1"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="btn btn-outline-primary mx-1" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="btn btn-outline-info mx-1" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="btn btn-outline-danger mx-1" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
             </div>
         </div>
